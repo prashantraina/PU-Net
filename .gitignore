@@ -1,0 +1,8 @@
+*.o
+*.so
+*.pyc
+code/tf_ops/grouping/selection_sort
+code/tf_ops/grouping/selection_sort_cuda
+code/tf_ops/sampling/1.pkl
+generator2_new6.zip
+model/generator2_new6/
