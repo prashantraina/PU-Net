@@ -231,7 +231,7 @@ class PlyData(object):
             if fields[0] == 'end_header':
                 break
 
-            elif fields[0] in comments.keys():
+            elif fields[0] in list(comments.keys()):
                 lines.append(fields)
             else:
                 lines.append(line.split())
@@ -241,7 +241,7 @@ class PlyData(object):
             raise PlyParseError("expected 'ply'")
 
         a += 1
-        while lines[a][0] in comments.keys():
+        while lines[a][0] in list(comments.keys()):
             comments[lines[a][0]].append(lines[a][1])
             a += 1
 
@@ -263,7 +263,7 @@ class PlyData(object):
         text = fmt == 'ascii'
 
         a += 1
-        while a < len(lines) and lines[a][0] in comments.keys():
+        while a < len(lines) and lines[a][0] in list(comments.keys()):
             comments[lines[a][0]].append(lines[a][1])
             a += 1
 

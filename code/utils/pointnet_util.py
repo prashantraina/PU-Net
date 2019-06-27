@@ -11,7 +11,7 @@ from tf_ops.grouping.tf_grouping import query_ball_point, group_point, knn_point
 from tf_ops.interpolation.tf_interpolate import three_nn, three_interpolate
 import tensorflow as tf
 import numpy as np
-import tf_util2
+from . import tf_util2
 
 def sample_and_group(npoint, radius, nsample, xyz, points, tnet_spec=None, knn=False, use_xyz=True):
     '''
@@ -79,7 +79,7 @@ def sample_and_group_all(xyz, points, use_xyz=True):
     batch_size = xyz.get_shape()[0].value
     nsample = xyz.get_shape()[1].value
     new_xyz = tf.constant(np.tile(np.array([0,0,0]).reshape((1,1,3)), (batch_size,1,1)),dtype=tf.float32) # (batch_size, 1, 3)
-    idx = tf.constant(np.tile(np.array(range(nsample)).reshape((1,1,nsample)), (batch_size,1,1)))
+    idx = tf.constant(np.tile(np.array(list(range(nsample))).reshape((1,1,nsample)), (batch_size,1,1)))
     grouped_xyz = tf.reshape(xyz, (batch_size, 1, nsample, 3)) # (batch_size, npoint=1, nsample, 3)
     if points is not None:
         if use_xyz:

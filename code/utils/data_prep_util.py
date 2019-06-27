@@ -2,7 +2,7 @@ import os
 import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
-from plyfile import (PlyData, PlyElement, make2d, PlyParseError, PlyProperty)
+from .plyfile import (PlyData, PlyElement, make2d, PlyParseError, PlyProperty)
 import numpy as np
 import h5py
 
@@ -41,7 +41,7 @@ def get_category_names():
 def get_obj_filenames():
     obj_filelist_file = os.path.join(MODELNET40_PATH, 'filelist.txt')
     obj_filenames = [os.path.join(MODELNET40_PATH, line.rstrip()) for line in open(obj_filelist_file)]
-    print('Got %d obj files in modelnet40.' % len(obj_filenames))
+    print(('Got %d obj files in modelnet40.' % len(obj_filenames)))
     return obj_filenames
 
 # Helper function to create the father folder and all subdir folders if not exist
